@@ -1,4 +1,4 @@
-package Hunt.Event.FireWork;
+package Hunt.Event.Compass;
 
 import org.bukkit.entity.Firework;
 import org.bukkit.event.EventHandler;
