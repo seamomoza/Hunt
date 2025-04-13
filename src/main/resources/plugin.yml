@@ -1,0 +1,8 @@
+name: Hunt
+version: '0'
+main: Hunt.Main.Hunt
+api-version: '1.21'
+commands:
+  hunt:
+    description: Start a hunt
+    usage: /hunt
