@@ -1,5 +1,6 @@
 package Hunt.Main;
 
+import Hunt.Command.GiveUpCommand;
 import Hunt.Command.HuntCommand;
 import Hunt.Event.Compass.CompassInteract;
 import Hunt.Event.Death.BarrierKeep;
@@ -16,6 +17,7 @@ public final class Hunt extends JavaPlugin {
     @Override
     public void onEnable() {
         getCommand("hunt").setExecutor(new HuntCommand(this));
+        getCommand("giveup").setExecutor(new GiveUpCommand(this));
         Bukkit.getPluginManager().registerEvents(new CompassInteract(), this);
         Bukkit.getPluginManager().registerEvents(new FireWorkDamage(), this);
         Bukkit.getPluginManager().registerEvents(new KillTheTarget(), this);

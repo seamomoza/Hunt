@@ -6,3 +6,6 @@ commands:
   hunt:
     description: Start a hunt
     usage: /hunt
+  giveup:
+    description: Give up on the hunt
+    usage: /giveup
