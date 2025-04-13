@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.FireworkEffect.Type;
 import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -60,7 +61,7 @@ public class EnderDragonDeath implements Listener {
                 Location loc = player.getLocation();
                 Firework fw = loc.getWorld().spawn(loc, Firework.class);
                 FireworkMeta meta = fw.getFireworkMeta();
-
+                fw.setMetadata("hunt_firework", new FixedMetadataValue(Hunt.getInstance(), true));
                 // 폭죽 효과 생성
                 FireworkEffect effect = FireworkEffect.builder()
                         .withColor(getRandomColor())
