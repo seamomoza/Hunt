@@ -5,7 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,6 +29,7 @@ public class KillTheTarget implements Listener {
             int inventorySize = targetInventory.getSize();
             Random random = new Random();
 
+            // 방벽 아이템을 이미 가진 슬롯들을 확인
             boolean allBarrier = true;
             for (int i = 0; i < inventorySize; i++) {
                 if (targetInventory.getItem(i) == null || targetInventory.getItem(i).getType() != Material.BARRIER) {
@@ -38,19 +38,13 @@ public class KillTheTarget implements Listener {
                 }
             }
 
-            double maxHealth = target.getAttribute(Attribute.MAX_HEALTH).getValue();
-
-            if (maxHealth <= 2) {
-                HuntCommand.currentTarget = null;
-                Bukkit.getOnlinePlayers().forEach(player -> {
-                    player.sendMessage(ChatColor.RED + "타겟이 패배하였습니다");
-                    player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_DEATH, 0.25f, 2);
-                });
-                return;
-            }
-
+            // 모든 슬롯이 방벽 아이템이라면 실행하지 않음
             if (allBarrier) {
-                target.setMaxHealth(maxHealth - 2);
+                Bukkit.getOnlinePlayers().forEach(player ->
+                        player.sendMessage(ChatColor.RED + "타겟이 패배하였습니다!"));
+                Bukkit.getOnlinePlayers().forEach(player ->
+                        player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_DEATH, 0.5f, 2));
+                target.sendMessage("패배함ㅋ");
                 return;
             }
 
