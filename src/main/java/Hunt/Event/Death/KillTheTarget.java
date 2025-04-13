@@ -6,10 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -22,6 +19,7 @@ public class KillTheTarget implements Listener {
         Player target = HuntCommand.currentTarget;
 
         if (target != null && event.getEntity().getUniqueId().equals(target.getUniqueId())) {
+
             event.setDeathMessage(ChatColor.RED + "타겟이 사망했습니다!");
 
             // 타겟의 인벤토리에서 랜덤 슬롯을 선택
