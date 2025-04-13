@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class HuntListener implements Listener {
+public class CompassInteract implements Listener {
 
     @EventHandler
     public void onCompassClick(PlayerInteractEvent event) {
