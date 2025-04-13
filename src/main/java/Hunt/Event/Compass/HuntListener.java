@@ -28,7 +28,7 @@ public class HuntListener implements Listener {
             event.getPlayer().sendMessage(ChatColor.RED + "현재 추적 중인 타겟이 없습니다.");
             return;
         }
-        event.getPlayer().setCooldown(Material.COMPASS, 20 * 60 * 5); // 5초 쿨타임
+        event.getPlayer().setCooldown(Material.COMPASS, 20 * 60 * 10); // 10분 쿨타임
 
         new BukkitRunnable() {
             int count = 0;
