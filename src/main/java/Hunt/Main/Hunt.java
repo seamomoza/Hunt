@@ -2,6 +2,7 @@ package Hunt.Main;
 
 import Hunt.Command.GiveUpCommand;
 import Hunt.Command.HuntCommand;
+import Hunt.Event.Brige.onShiftBrige;
 import Hunt.Event.Compass.CompassInteract;
 import Hunt.Event.Death.BarrierKeep;
 import Hunt.Event.Death.KillTheTarget;
@@ -23,6 +24,7 @@ public final class Hunt extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new KillTheTarget(), this);
         Bukkit.getPluginManager().registerEvents(new BarrierKeep(), this);
         Bukkit.getPluginManager().registerEvents(new EnderDragonDeath(), this);
+        Bukkit.getPluginManager().registerEvents(new onShiftBrige(), this);
         instance = this; // ✅ 인스턴스 저장
 
     }
