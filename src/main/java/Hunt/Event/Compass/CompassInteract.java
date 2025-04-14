@@ -11,6 +11,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class CompassInteract implements Listener {
@@ -28,6 +30,7 @@ public class CompassInteract implements Listener {
             event.getPlayer().sendMessage(ChatColor.RED + "현재 추적 중인 타겟이 없습니다.");
             return;
         }
+        glowing(target);
         event.getPlayer().setCooldown(Material.COMPASS, 20 * 60 * 10); // 10분 쿨타임
 
         new BukkitRunnable() {
@@ -49,5 +52,21 @@ public class CompassInteract implements Listener {
                 count++;
             }
         }.runTaskTimer(Hunt.getInstance(), 0L, 40L); // 1초마다 발사
+    }
+
+    public void glowing(Player player) {
+        new BukkitRunnable() {
+            int count = 0;
+
+            @Override
+            public void run() {
+                if (count >= 3) {
+                    cancel();
+                    return;
+                }
+                player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, (int) (20 * 1.5), 1));
+                count++;
+            }
+        }.runTaskTimer(Hunt.getInstance(), 0, 20);
     }
 }
